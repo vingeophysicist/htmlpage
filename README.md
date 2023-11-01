@@ -1,0 +1,1 @@
+This is a simple code to describe the structure of hypertext languages.
