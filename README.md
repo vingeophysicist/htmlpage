@@ -1,1 +1,1 @@
-This is a simple code to describe the structure of hypertext languages.
+This is a simple code to describe the structure of hypertext markup languages (HTML) and how the elements of HTML are used to create a page on the web.
