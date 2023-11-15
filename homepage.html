@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page describing python language</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>How I started learning Python programming language</h1>
+    <h1 class = "topic">How I started learning Python programming language</h1>
     <p>I gained interest in learning Python because I had an interest in web development. </p> 
     <p>   The journey started years ago when I bought a course on Udemy.</p>  
-        <p> It was a Python course, but it was focused on using Python and Django to develop dynamic web applications. </p> 
-            <p> I took the course along with HTML, CSS, and Javascript, and later on, I learned React to boost my frontend skills. </p> 
-                <p>   The journey so far has been a wonderful one for me. Python knowledge has given me the knowledge and power to create wonderful web applications that solve human problems</p> 
+    <p> It was a Python course, but it was focused on using Python and Django to develop dynamic web applications. </p> 
+    <p> I took the course along with HTML, CSS, and Javascript, and later on, I learned React to boost my frontend skills. </p> 
+    <p>   The journey so far has been a wonderful one for me. </p>
+        <p>Python knowledge has given me the knowledge and power to create wonderful web applications that solve human problems</p> 
 
-    <h2>Features of python programming language</h2>
+    <h2 class="topic1">Features of python programming language</h2>
     <ol>
         <li>Python is a general purpose language.Apart from web development. it can be used for game development, web scraping and data analysis</li>
         <li>The Python programming syntax is easy to learn</li>
@@ -22,7 +24,7 @@
         
     </ol>
 
-    <h3>Pros and cons of Python language</h3>
+    <h3 class="topic2">Pros and cons of Python language</h3>
     <table>
         <tr>
           <th>pros of python</th>
@@ -53,58 +55,22 @@
         class Category(models.Model):
     name = models.CharField(max_length=500)
     slug = models.SlugField(max_length=250, default='default-slug', unique=True)
-    
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
-    
-    class Meta:
-        verbose_name_plural = "Categories"
-    
-    def __str__(self):
-        return self.name
-
     </code> 
 
 
-    <code>
-
-class Post(models.Model):
+    <h3 class="topic3">Why the language match my needs</h3>
+    <p> The language matches my needs because of its multipurpose nature.</p>
+    <p> I can decide to use it for data analysis or machine without requiring to learn a new language. </p>
+    <p>It's a very good backend language for web development.</p>
     
-    
-    
-    class PostObjects(models.Manager):
-        def get_query(self):
-            return super().get_queryset().filter(status="published")
-    
-    options = (
-       ("draft", "Draft"),
-       ("published", "Published")
-    )
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    title = models.CharField(max_length=500)
-    content = models.TextField()
-    slug = models.SlugField(max_length=250, unique_for_date="published")
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    published = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=10, choices=options, default="published")
-    objects = models.Manager() #default manager
-    PostObjects = models.Manager() # custom manager
-
-
-      </code> 
-
-    <h3>Why the language match my needs</h3>
-    <p> The language matches my needs because of its multipurpose nature. I can decide to use it for data analysis or machine without requiring to learn a new language. It's a very good backend language for web development.</p>
-    
-    <h2> wants to learn more on Python</h2>
-   <li> <a href="https://www.anythingpython.com">anythingpython.com</a></li>
+    <h2 class="topic4"> wants to learn more on Python</h2>
+   <li> <a class="link1" href="https://www.anythingpython.com">anythingpython.com</a></li>
    <li> <a href="https://www.udemy.com">udemy.com</a></li>
    <li><a href="https://www.freecodecamp.com">freecodecamp.com</a></li>
 
 
   
-<h1>Feedback form</h1>
+<h1 class="topic5">Feedback form</h1>
    <form action="" method="post">
     <p>Gender:
         <br />
@@ -116,7 +82,7 @@ class Post(models.Model):
         Others
     </p>
 
-    <fieldset>
+    <fieldset style="width: 500px;">
         <legend>Contact details</legend>
         <label>Email:<br />
         <input type="text" name="email" /></label><br />
