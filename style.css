@@ -1,5 +1,7 @@
 body{
-    margin-left: 500px;
+    max-width: max-content;
+    margin: auto;
+    font-size: 15px;
 }
 table, th, td {
     border: 1px solid;    
@@ -12,10 +14,15 @@ table, th, td {
 
   .topic, .topic1, .topic2, .topic3, .topic4, .topic5 {
     color: #8F00FF;
+    text-align: center;
   }
 
   .link1{
     color: #1565c0;
+  }
+
+  form{
+    margin-bottom: 15px;
   }
 
 
