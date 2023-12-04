@@ -81,8 +81,11 @@ body{
     margin-bottom: 100px;
   }
 
-  #message input[type=text]{
-    height: 150px;
-    padding: 0px 0px;
-    margin: 0px 0;
+  #message {
+    height: 100px;
+    color: green;
+    width:100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
+
