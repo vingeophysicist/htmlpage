@@ -134,48 +134,57 @@
    <li><a href="https://www.freecodecamp.com">freecodecamp.com</a></li>
 
 
+
+
+
+   <script>
+    function myFunction(){
+      document.getElementById("value1").innerHTML=document.feedbackform.firstname.value;
+      document.getElementById("value2").innerHTML=document.feedbackform.lastname.value;
+      document.getElementById("value3").innerHTML=document.feedbackform.country.value;
+      document.getElementById("value4").innerHTML=document.feedbackform.message.value;
+
+
+    }
+       
+   </script>
   
 <h1 class="topic5">Feedback form</h1>
-   <form action="" method="post">
-    <p>Gender:
-        <br />
-        <input type="radio" name="genre" value="rock"
-        checked="checked" /> Male
-        <input type="radio" name="genre" value="pop" />
-         Female
-        <input type="radio" name="genre" value="jazz" />
-        Others
-    </p>
+  <div class="divbox">
+    <form name="feedbackform">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name.." value="">
+  
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lastname" placeholder="Your last name.." value="">
+  
+      <label for="country">Country</label>
+      <select id="country" name="country" value="">
+        <option value="Russia">Russia</option>
+        <option value="Nigeria">Nigeria</option>
+        <option value="australia">Australia</option>
+        <option value="canada">Canada</option>
+        <option value="usa">USA</option>
+      </select>
 
-    <fieldset style="width: 500px;">
-        <legend>Contact details</legend>
-        <label>Email:<br />
-        <input type="text" name="email" /></label><br />
-        <label>Mobile:<br />
-        <input type="text" name="mobile" /></label><br />
-        <label>Telephone:<br />
-        <input type="text" name="telephone" /></label>
-    </fieldset>
+      <label for="message">Message</label>
+      <input type="text" id="message" name="message" placeholder="Type your report....." value="">
+    
+      <input type="submit" value="Submit" onclick="myFunction(); return false">
+
+
+
+
+    <p id="value1"></p>
+   <p id="value2"></p>
+   <p id="value3"></p>
+   <p id="value4"></p>
+    </form>
+  </div>
+
    
 
 
-    <p>
-        <label for="message">
-        Message:
-        </label>
-        <br />
-        <textarea rows="4" cols="40" id="message">
-        </textarea>
-     </p>
-
-     <input type="submit" value="submit" />
-
-
-
-
-       
-
-   </form>
 
 </body>
 </html>
