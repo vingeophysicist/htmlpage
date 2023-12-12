@@ -137,37 +137,127 @@
 
 
 
-   <script>
-    function myFunction(){
-      document.getElementById("value1").innerHTML=document.feedbackform.firstname.value;
-      document.getElementById("value2").innerHTML=document.feedbackform.lastname.value;
-      document.getElementById("value3").innerHTML=document.feedbackform.country.value;
-      document.getElementById("value4").innerHTML=document.feedbackform.message.value;
+  
 
 
-    }
-       
-   </script>
+   
   
 <h1 class="topic5">Feedback form</h1>
   <div class="divbox">
-    <form name="feedbackform">
+    <form name="feedbackform" id="myForm">
       <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstname" placeholder="Your name.." value="">
+      <input type="text" id="fname" name="firstname" placeholder="Your name.." value="James">
   
       <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lastname" placeholder="Your last name.." value="">
+      <input type="text" id="lname" name="lastname" placeholder="Your last name.." value="John">
   
-      <label for="country">Country</label>
-      <select id="country" name="country" value="">
-        <option value="Russia">Russia</option>
-        <option value="Nigeria">Nigeria</option>
-        <option value="australia">Australia</option>
-        <option value="canada">Canada</option>
-        <option value="usa">USA</option>
+      <label for="lname">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" value="trig@gmail.com" >
+    
+      <button type="submit">Submit</button>
+
+
+
+
+      <ul id="displayList" style="list-style-type: none;">
+       
+      </ul>
+
+    </form>
+    
+    
+  </div>
+
+
+  <script>
+
+   const form = document.getElementById('myForm');
+   const displayList = document.getElementById('displayList');
+
+// Add a submit event listener to the form
+form.addEventListener('submit', (event) => {
+  // Prevent the default form submission to avoid page reload
+  event.preventDefault();
+
+  // Get the values from the three input fields
+  const input1Value = document.getElementById('fname').value;
+  const input2Value = document.getElementById('lname').value;
+  const input3Value = document.getElementById('email').value;
+
+  // Create a new list item and append it to the list
+  const listItem = document.createElement('li');
+  listItem.innerHTML = `<span style="font-weight:bold;">First name:</span> ${input1Value}<span style="font-weight:bold;"> last name: </span>${input2Value} <span style="font-weight:bold;"> email:</span> ${input3Value}<hr>`;
+  displayList.appendChild(listItem);
+
+  // Optionally, you can clear the input fields after submission
+ 
+});
+   
+   
+   
+        /*
+   
+        function su"menu"
+         e.preventDefault();
+        
+        var myform =  document.getElementById("myform");
+         
+         var formData = new FormData(myform);
+       
+         fetch("https://my-json-server.typicode.com/depth0/survey1/surveys", {
+           method: "GET",
+           body: formData,
+         })
+           .then(response => {
+           if (!response.ok) {
+             throw new Error('network returns error');
+           }
+           return response.json();
+         })
+           .then((resp) => {
+             let respdiv = document.createElement("pre");
+             respdiv.innerHTML = JSON.stringify(resp, null, 2);
+             myform.replaceWith(respdiv);
+             console.log("resp from server ", resp);
+           })
+           .catch((error) => {
+             // Handle error
+             console.log("error ", error);
+           });
+       }
+       
+       var myform = document.getElementById("myform");
+       
+       myform.addEventListener("submit", submitForm);
+   
+       */
+       
+          
+      </script>
+
+
+
+
+
+<!--
+
+  <h1 class="topic5">Feedback form</h1>
+  <div class="divbox">
+    <form name="feedbackform">
+      <label for="fname">Name</label>
+      <input type="text" id="fname" name="firstname" placeholder="Your name.." value="">
+  
+      <label for="lname">Email</label>
+      <input type="email" id="lname" name="lastname" placeholder="Your last name.." value="">
+  
+      <label for="selection">Selection</label>
+      <select id="selection" name="selection" value="">
+        <option value="Student">Student</option>
+        <option value="Bachelor">Bachelor</option>
+        
       </select>
 
-      <label for="message">Message</label>
+      <label for="message">Comments</label>
       <textarea type="text" id="message" name="message" placeholder="Type your report....." value=""></textarea>
     
       <input type="submit" value="Submit" onclick="myFunction(); return false">
@@ -181,6 +271,8 @@
    <p id="value4"></p>
     </form>
   </div>
+
+-->
 
    
 
