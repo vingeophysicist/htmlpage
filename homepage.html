@@ -166,6 +166,7 @@
     </form>
     
     
+    
   </div>
 
 
@@ -174,22 +175,17 @@
    const form = document.getElementById('myForm');
    const displayList = document.getElementById('displayList');
 
-// Add a submit event listener to the form
 form.addEventListener('submit', (event) => {
-  // Prevent the default form submission to avoid page reload
   event.preventDefault();
 
-  // Get the values from the three input fields
   const input1Value = document.getElementById('fname').value;
   const input2Value = document.getElementById('lname').value;
   const input3Value = document.getElementById('email').value;
 
-  // Create a new list item and append it to the list
   const listItem = document.createElement('li');
   listItem.innerHTML = `<span style="font-weight:bold;">First name:</span> ${input1Value}<span style="font-weight:bold;"> last name: </span>${input2Value} <span style="font-weight:bold;"> email:</span> ${input3Value}<hr>`;
   displayList.appendChild(listItem);
 
-  // Optionally, you can clear the input fields after submission
  
 });
    
