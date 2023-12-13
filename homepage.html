@@ -140,7 +140,7 @@
   
 
 
-   
+<!--
   
 <h1 class="topic5">Feedback form</h1>
   <div class="divbox">
@@ -168,9 +168,11 @@
     
     
   </div>
-
+-->
 
   <script>
+
+  /*
 
    const form = document.getElementById('myForm');
    const displayList = document.getElementById('displayList');
@@ -188,55 +190,37 @@ form.addEventListener('submit', (event) => {
 
  
 });
+
+*/
+
+function displayData() {
+  const selection = document.getElementById("selection").value;
+
+  const link1 = "https://my-json-server.typicode.com/depth0/survey1/surveys";
+  const link2 = "https://my-json-server.typicode.com/depth0/survey1/questions";
+
+  const selectedLink = (selection === "Student") ? link1 : link2;
+
+  fetch(selectedLink)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Failed to fetch data. Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      document.getElementById("output").innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      console.error("Error fetching JSON data:", error);
+      document.getElementById("output").innerText = "Error fetching JSON data.";
+    });
+}
+
+   </script>
+
+
    
-   
-   
-        /*
-   
-        function su"menu"
-         e.preventDefault();
-        
-        var myform =  document.getElementById("myform");
-         
-         var formData = new FormData(myform);
-       
-         fetch("https://my-json-server.typicode.com/depth0/survey1/surveys", {
-           method: "GET",
-           body: formData,
-         })
-           .then(response => {
-           if (!response.ok) {
-             throw new Error('network returns error');
-           }
-           return response.json();
-         })
-           .then((resp) => {
-             let respdiv = document.createElement("pre");
-             respdiv.innerHTML = JSON.stringify(resp, null, 2);
-             myform.replaceWith(respdiv);
-             console.log("resp from server ", resp);
-           })
-           .catch((error) => {
-             // Handle error
-             console.log("error ", error);
-           });
-       }
-       
-       var myform = document.getElementById("myform");
-       
-       myform.addEventListener("submit", submitForm);
-   
-       */
-       
-          
-      </script>
-
-
-
-
-
-<!--
-
   <h1 class="topic5">Feedback form</h1>
   <div class="divbox">
     <form name="feedbackform">
@@ -244,7 +228,7 @@ form.addEventListener('submit', (event) => {
       <input type="text" id="fname" name="firstname" placeholder="Your name.." value="">
   
       <label for="lname">Email</label>
-      <input type="email" id="lname" name="lastname" placeholder="Your last name.." value="">
+      <input type="email" id="email" name="email" placeholder="Your email.." value="">
   
       <label for="selection">Selection</label>
       <select id="selection" name="selection" value="">
@@ -256,19 +240,14 @@ form.addEventListener('submit', (event) => {
       <label for="message">Comments</label>
       <textarea type="text" id="message" name="message" placeholder="Type your report....." value=""></textarea>
     
-      <input type="submit" value="Submit" onclick="myFunction(); return false">
+      <button type="button" onclick="displayData()">Submit</button>
 
-
-
-
-   <p id="value1"></p>
-   <p id="value2"></p>
-   <p id="value3"></p>
-   <p id="value4"></p>
     </form>
+
+    <div id="output"></div>
   </div>
 
--->
+
 
    
 
