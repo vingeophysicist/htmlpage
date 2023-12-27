@@ -134,25 +134,30 @@
    <li><a href="https://www.freecodecamp.com">freecodecamp.com</a></li>
 
 
-
-
-
-  
-
-
-<!--
   
 <h1 class="topic5">Feedback form</h1>
   <div class="divbox">
     <form name="feedbackform" id="myForm">
-      <label for="fname">First Name</label>
-      <input type="text" id="fname" name="firstname" placeholder="Your name.." value="James">
-  
-      <label for="lname">Last Name</label>
-      <input type="text" id="lname" name="lastname" placeholder="Your last name.." value="John">
+      <label for="fname">Name</label>
+      <input type="text" id="name" name="firstname" placeholder="Your name.." value="James">
   
       <label for="lname">Email</label>
       <input type="email" id="email" name="email" placeholder="Email" value="trig@gmail.com" >
+
+      <label for="selection">Selection</label>
+      <select name="selection" value="" id="userType" onchange="loadJsonData()">
+        <option value="student">Student</option>
+        <option value="bachelor">Bachelor</option>
+
+        
+      </select>
+
+      <div id="jsonDataDisplay"></div>
+
+
+
+      <label for="message">Comment</label>
+      <textarea type="text" id="message" name="message" placeholder="Your comment.." value="comment"> </textarea>
     
       <button type="submit">Submit</button>
 
@@ -168,30 +173,35 @@
     
     
   </div>
--->
+
 
   <script>
 
-  /*
+  
 
-   const form = document.getElementById('myForm');
-   const displayList = document.getElementById('displayList');
+const form = document.getElementById('myForm');
+const displayList = document.getElementById('displayList');
+
 
 form.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  const input1Value = document.getElementById('fname').value;
-  const input2Value = document.getElementById('lname').value;
-  const input3Value = document.getElementById('email').value;
+  const input1Value = document.getElementById('name').value;
+  const input2Value = document.getElementById('email').value;
+  const input3Value = document.getElementById('userType').value;
+  const input4Value = document.getElementById('message').value;
 
   const listItem = document.createElement('li');
-  listItem.innerHTML = `<span style="font-weight:bold;">First name:</span> ${input1Value}<span style="font-weight:bold;"> last name: </span>${input2Value} <span style="font-weight:bold;"> email:</span> ${input3Value}<hr>`;
+  listItem.innerHTML = 
+  `<span style="font-weight:bold;">Name:</span> ${input1Value} <br>
+  <span style="font-weight:bold;"> Email: </span>${input2Value} <br>
+  <span style="font-weight:bold;"> Options:</span> ${input3Value} <br>
+  <span style="font-weight:bold;">Comment:</span> ${input4Value}`;
   displayList.appendChild(listItem);
 
  
 });
-
-*/
+/*
 
 function displayData() {
   const selection = document.getElementById("selection").value;
@@ -217,9 +227,56 @@ function displayData() {
     });
 }
 
-   </script>
+*/
 
 
+
+
+function loadJsonData() {
+  const userType = document.getElementById('userType').value;
+
+  const studentJsonLink = 'https://my-json-server.typicode.com/depth0/survey1/surveys';
+  const bachelorJsonLink = 'https://my-json-server.typicode.com/depth0/survey1/questions';
+
+  const jsonLink = (userType === 'student') ? studentJsonLink : bachelorJsonLink;
+
+  fetch(jsonLink)
+    .then(response => response.json())
+    .then(jsonData => {
+
+      const jsonDataDisplay = document.getElementById('jsonDataDisplay');
+
+      jsonDataDisplay.innerHTML = '';
+
+      jsonData.forEach(item => {
+
+        const itemDiv = document.createElement('div');
+        itemDiv.innerHTML = `
+        <form>
+          <p>${item.title}</p>
+          <p>${item.desc || item.description}</p>
+          <p>${item.nq || item.options.length}</p>
+          <p>${item.qs ? item.qs.join(', ') : item.options.join(', ')}</p>
+          <hr>
+          <submit>
+        </form>
+        `;
+        jsonDataDisplay.appendChild(itemDiv);
+      });
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+}
+
+loadJsonData();
+
+</script>
+
+
+   
+
+
+
+<!--
    
   <h1 class="topic5">Feedback form</h1>
   <div class="divbox">
@@ -246,11 +303,7 @@ function displayData() {
 
     <div id="output"></div>
   </div>
-
-
-
-   
-
+-->
 
 
 </body>
